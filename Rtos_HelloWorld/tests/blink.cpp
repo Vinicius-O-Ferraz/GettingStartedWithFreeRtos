@@ -15,23 +15,17 @@ void toggleLed(void *parameter){
     vTaskDelay(500/ portTICK_PERIOD_MS);
     digitalWrite(led_pin,LOW);
     vTaskDelay(500/ portTICK_PERIOD_MS);
-  }
-  
-    
+  }   
 }
 
-void toggleLedFaster(){
-  digitalWrite(led_pin,HIGH);
-  vTaskDelay(100/portTICK_PERIOD_MS);
-  digitalWrite(led_pin,LOW);
-  vTaskDelay(100/portTICK_PERIOD_MS);
-}
-
-void toggleLedSlower(){
-  digitalWrite(led_pin,HIGH);
-  vTaskDelay(1500/portTICK_PERIOD_MS);
-  digitalWrite(led_pin,LOW);
-  vTaskDelay(1500/portTICK_PERIOD_MS);
+void toggleLed2(void *parameter){
+  while (1)
+  {
+    digitalWrite(led_pin,HIGH);
+    vTaskDelay(323/ portTICK_PERIOD_MS);
+    digitalWrite(led_pin,LOW);
+    vTaskDelay(323/ portTICK_PERIOD_MS);
+  }   
 }
 
 void setup() {
@@ -44,6 +38,16 @@ void setup() {
     1,
     NULL,
     app_cpu);
+
+  xTaskCreatePinnedToCore(
+    toggleLed2,
+    "Toggle LED",
+    1024,
+    NULL,
+    1,
+    NULL,
+    app_cpu);
+
 
 }
 
