@@ -9,12 +9,29 @@ static const BaseType_t app_cpu = 1;
 static const int led_pin = LED_BUILTIN;
 
 void toggleLed(void *parameter){
-  while(1){
+  while (1)
+  {
     digitalWrite(led_pin,HIGH);
     vTaskDelay(500/ portTICK_PERIOD_MS);
     digitalWrite(led_pin,LOW);
     vTaskDelay(500/ portTICK_PERIOD_MS);
   }
+  
+    
+}
+
+void toggleLedFaster(){
+  digitalWrite(led_pin,HIGH);
+  vTaskDelay(100/portTICK_PERIOD_MS);
+  digitalWrite(led_pin,LOW);
+  vTaskDelay(100/portTICK_PERIOD_MS);
+}
+
+void toggleLedSlower(){
+  digitalWrite(led_pin,HIGH);
+  vTaskDelay(1500/portTICK_PERIOD_MS);
+  digitalWrite(led_pin,LOW);
+  vTaskDelay(1500/portTICK_PERIOD_MS);
 }
 
 void setup() {
