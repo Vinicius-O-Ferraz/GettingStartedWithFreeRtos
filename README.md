@@ -31,3 +31,17 @@ This repository serves as a learning and development environment for studying th
 The project will focus on creating examples and applications that demonstrate how FreeRTOS can be used to manage tasks, schedule events, and achieve real-time control on the ESP32.
 
 Feel free to explore, contribute, and learn alongside us as we unlock the potential of FreeRTOS for embedded development on the ESP32!
+
+### Getting Started
+
+* 1- Install the freertos at https://www.freertos.org/
+* 2- Install Vscode at https://code.visualstudio.com/
+* 3- Install the plaformIo extension on Vscode and configure it accordingly to your board
+* 4- clone this repository using `git clone https://github.com/Vinicius-O-Ferraz/GettingStartedWithFreeRtos.git`
+* 5- and run the main class using platformIO
+
+### Blimp
+
+The code will example two tasks that will toggle the LED on the Arduino board at different frequencies. One LED will blink on and off every 500 milliseconds, while the other will blink on and off every 323 milliseconds. This demonstrates how FreeRTOS allows for multiple tasks to run concurrently, creating a more complex behavior compared to a simple loop in a traditional Arduino program.
+
+https://github.com/Vinicius-O-Ferraz/GettingStartedWithFreeRtos/assets/146992032/e67f94f5-a686-4922-8d28-bd8b558a6b70
