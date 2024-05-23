@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "FreeRTOS",
+			"path": "../../.."
+		},
+		{
+			"name": "Rtos_HelloWorld",
+			"path": "../../../../../Documentos/PlatformIO/Projects/Rtos_HelloWorld"
+		}
+	],
+	"settings": {}
+}
