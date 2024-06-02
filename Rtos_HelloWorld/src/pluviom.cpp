@@ -1,17 +1,21 @@
 #include <Arduino.h>
-#include <Timer.h>
 #include "PluviomSensor.h"
 
-#define PIN_SENSOR 6 // Pino digital 2
+#define PIN_SENSOR_P 2 // Pino digital 2
 
 int basculaCount = 0; // Current value of reed switch
 float mmChuva = 0;    // Rainfall in mm
 unsigned long previousMillis = 0;
 
+void addBasculaCount()
+{
+    basculaCount++;
+}
+
 void initPluviomSensor()
 {
-    pinMode(PIN_SENSOR, INPUT_PULLUP); // This activates the internal pull up resistor
-    attachInterrupt(digitalPinToInterrupt(PIN_SENSOR), addBasculaCount, RISING);
+    pinMode(PIN_SENSOR_P, INPUT_PULLUP); // This activates the internal pull up resistor
+    attachInterrupt(digitalPinToInterrupt(PIN_SENSOR_P), addBasculaCount, RISING);
 }
 
 void getPluviomData()
@@ -26,10 +30,6 @@ void getPluviomData()
     Serial.println(" mm");
 }
 
-void addBasculaCount()
-{
-    basculaCount++;
-}
 
 void startPluviomTimer()
 {

@@ -5,6 +5,9 @@
 #include "BMESensor.h"
 #include "AnemomSensor.h"
 #include "PluviomSensor.h"
+#include "anemom.cpp"
+#include "pluviom.cpp"
+#include "bme.cpp"
 
 void setup()
 {

@@ -8,49 +8,20 @@ const unsigned long PERIOD = 5000; // Tempo de medição (milissegundos)
 const int RADIUS = 147;            // Raio do anemômetro em milímetros
 
 volatile unsigned int counter = 0; // Contador de interacoes magneticas do sensor
-volatile unsigned int RPM = 0;     // Rotacoes por minuto
-volatile float ms_windSpeed = 0;   // Velocidade do vento (m/s)
+float RPM = 0;     // Rotacoes por minuto
+float ms_windSpeed = 0;   // Velocidade do vento (m/s)
 
 volatile int windsock_dir = 0; // Direção do vento (graus)
+
+void IRAM_ATTR addcount()
+{
+    counter++;
+}
 
 void initAnemomSensor()
 {
     pinMode(PIN_SENSOR, INPUT);
     attachInterrupt(digitalPinToInterrupt(PIN_SENSOR), addcount, RISING);
-}
-
-void getWindSpeedData()
-{
-    while (true)
-    {
-        Serial.print("Counter: ");
-        Serial.print(counter);
-        Serial.print(";  RPM: ");
-        Serial.print(RPM);
-        Serial.print(";  Wind speed: ");
-        Serial.print(ms_windSpeed);
-        Serial.println(" [m/s]");
-
-        delay(PERIOD);
-    }
-}
-
-void updateWindSpeedData()
-{
-    while (true)
-    {
-        delay(PERIOD); // Espera pelo intervalo de medição
-
-        RPMcalc();
-        WindSpeed();
-        // Reseta contador
-        counter = 0;
-    }
-}
-
-void IRAM_ATTR addcount()
-{
-    counter++;
 }
 
 void RPMcalc()
@@ -103,3 +74,34 @@ void getWindDirectionData()
     Serial.println(windsock_dir);
     Serial.println();
 }
+
+void getWindSpeedData()
+{
+    while (true)
+    {
+        Serial.print("Counter: ");
+        Serial.print(counter);
+        Serial.print(";  RPM: ");
+        Serial.print(RPM);
+        Serial.print(";  Wind speed: ");
+        Serial.print(ms_windSpeed);
+        Serial.println(" [m/s]");
+
+        delay(PERIOD);
+    }
+}
+
+void updateWindSpeedData()
+{
+    while (true)
+    {
+        delay(PERIOD); // Espera pelo intervalo de medição
+
+        RPMcalc();
+        WindSpeed();
+        // Reseta contador
+        counter = 0;
+    }
+}
+
+

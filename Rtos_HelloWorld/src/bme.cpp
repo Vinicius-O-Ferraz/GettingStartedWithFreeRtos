@@ -29,7 +29,7 @@
 // #define BME_MOSI 11
 // #define BME_CS 10
 
-#define BME280_ADDRESS 0x76
+#define BME280_ADDRESS 0x77
 #define SEALEVELPRESSURE_HPA (1013.25)
 
 Adafruit_BME280 bme; // I2C
@@ -39,8 +39,6 @@ float temperature;
 float pressure;
 float altitude;
 float humidity;
-
-const unsigned long PERIOD = 5000; // Tempo de medição (milissegundos)
 unsigned long delayTime;
 
 TwoWire i2cbme = TwoWire(0);
