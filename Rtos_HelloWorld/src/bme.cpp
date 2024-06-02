@@ -30,6 +30,7 @@
 // #define BME_CS 10
 
 #define BME280_ADDRESS 0x76
+
 #define SEALEVELPRESSURE_HPA (1013.25)
 
 Adafruit_BME280 bme; // I2C
