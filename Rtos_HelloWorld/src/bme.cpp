@@ -46,11 +46,9 @@ unsigned long delayTime;
 
 TwoWire i2cbme = TwoWire(0);
 
-
 void initBMESensor()
 {
     i2cbme.begin(21, 22, 100000);
-    Serial.begin(9600);
     while (!Serial)
         ; // time to get serial running
     Serial.println(F("BME280 test"));
@@ -82,25 +80,25 @@ void initBMESensor()
 
 void updateBMESensorData()
 {
-        temperature = bme.readTemperature();
-        pressure = bme.readPressure() / 100.0F;
-        altitude = bme.readAltitude(SEALEVELPRESSURE_HPA);
-        humidity = bme.readHumidity();
+    temperature = bme.readTemperature();
+    pressure = bme.readPressure() / 100.0F;
+    altitude = bme.readAltitude(SEALEVELPRESSURE_HPA);
+    humidity = bme.readHumidity();
 }
 
 void getBMESensorData()
 {
-        Serial.print("Temperature = ");
-        Serial.print(temperature);
-        Serial.println(" °C");
-        Serial.print("Pressure = ");
-        Serial.print(pressure);
-        Serial.println(" hPa");
-        Serial.print("Approx. Altitude = ");
-        Serial.print(altitude);
-        Serial.println(" m");
-        Serial.print("Humidity = ");
-        Serial.print(humidity);
-        Serial.println(" %");
-        Serial.println();
+    Serial.print("Temperature = ");
+    Serial.print(temperature);
+    Serial.println(" °C");
+    Serial.print("Pressure = ");
+    Serial.print(pressure);
+    Serial.println(" hPa");
+    Serial.print("Approx. Altitude = ");
+    Serial.print(altitude);
+    Serial.println(" m");
+    Serial.print("Humidity = ");
+    Serial.print(humidity);
+    Serial.println(" %");
+    Serial.println();
 }

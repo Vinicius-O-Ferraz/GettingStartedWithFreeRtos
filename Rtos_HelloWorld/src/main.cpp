@@ -8,6 +8,8 @@
 
 void setup()
 {
+    Serial.begin(115200);
+
     initBMESensor();
     initAnemomSensor();
     initPluviomSensor();
@@ -20,6 +22,9 @@ void loop()
 
     updateWindSpeedData();
     getWindSpeedData();
+
+    updateWindDirectionData();
+    getWindDirectionData();
 
     startPluviomTimer();
     getPluviomData();
